@@ -1,0 +1,59 @@
+<div *ngIf="product && product.isFeatured; else expiredTemplate" class="product-details-container">
+  <div class="left-section">
+    <div class="image-gallery">
+      <div class="main-image">
+        <img [src]="currentImage" alt="Product Image" (click)="currentImage && openModal(currentImage)">
+      </div>
+      <div class="image-thumbnails">
+        <img *ngFor="let image of product.images; let i = index"
+             [src]="'http://localhost:3000/assets/productImages/' + product.name + '/' + image"
+             (click)="changeImage(i)"
+             [class.active]="i === currentImageIndex">
+      </div>
+    </div>
+    <div class="overview">
+      <p><strong>Category:</strong> {{ product.category }}</p>
+      <p><strong>Type:</strong> {{ product.details['type'] }}</p>
+      <p><strong>Owner type:</strong> {{ product.details['ownerType'] }}</p>
+      <p><strong>Year:</strong> {{ product.details['year'] }}</p>
+      <p><strong>Other details:</strong> {{ product.details['otherDetails'] }}</p>
+      <p><strong>Description: </strong>{{ product.description }}</p>
+    </div>
+  </div>
+
+  <div class="right-section">
+    <div class="product-info">
+      <h2>{{ product.name }}</h2>
+      <p class="price">₹ {{ product.price }}</p>
+      <p class="address">
+        {{ product.address['houseNo'] }}, 
+        {{ product.address['street'] }}, 
+        {{ product.address['landmark'] }}, 
+        {{ product.address['state'] }}, 
+        {{ product.address['country'] }}, 
+        {{ product.address['pincode'] }}
+      </p>
+      <button *ngIf="loggedUserId !== product.sellerId" class="chat-with-seller" (click)="chatWithSeller()">Chat with Seller</button>
+      <button *ngIf="loggedUserId !== product.sellerId" class="view-seller-profile" (click)="viewSeller()">View Seller Profile</button>
+      <button class="view-seller-profile" (click)="copyProductLink()">Share Product</button>
+      <div class="minimap" id="map"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal for zooming image -->
+<div class="modal" *ngIf="isModalOpen" (click)="closeModal()">
+  <div class="modal-content">
+    <img [src]="modalImage" alt="Zoomed Image" class="zoomed-image">
+  </div>
+</div>
+
+
+<!-- Template to show if the product is expired -->
+<ng-template #expiredTemplate>
+  <div>
+    <h3>Product Expired</h3>
+    <br><br>
+    <h5>Product Not Available</h5>
+  </div>
+</ng-template>

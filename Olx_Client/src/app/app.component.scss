@@ -1,0 +1,26 @@
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+.container-fluid {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding: 0;
+}
+
+
+.content {
+  flex-grow: 1;
+}
+
+.footer {
+  background-color: #f8f9fa; /* Adjust color as needed */
+  padding: 1rem 0;
+  text-align: center;
+  width: 100%;
+  position: relative;
+  bottom: 0;
+}
+

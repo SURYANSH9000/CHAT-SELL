@@ -1,0 +1,65 @@
+<div class="content">
+  <div class="container mt-4">
+    <div class="row">
+      <div
+        class="col-md-4"
+        *ngFor="let ad of ads"
+        [ngClass]="{ 'expired': !ad.isFeatured }"
+      >
+        <div
+          class="card mb-4"
+          (click)="!ad.isFeatured ? null : onClick(ad._id)"
+        >
+          <div class="image-container">
+            <img
+              [src]="'http://localhost:3000/assets/productImages/' + ad.name + '/' + ad.images[0]"
+              class="card-img-top"
+              alt="Ad Image"
+            />
+            <div *ngIf="!ad.isFeatured" class="expired-overlay">
+              Expired
+            </div>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">{{ ad.name }}</h5>
+            <p class="card-text">
+              {{ ad.description | slice: 0: 30 }}...
+            </p>
+            <p class="card-text">
+              Price: {{ ad.price | currency: 'INR':'symbol' }}
+            </p>
+            <div class="button-group">
+              <div class="mb-2">
+                <button
+                  (click)="updateAd(ad._id)"
+                  class="btn btn-secondary btn-block"
+                  [disabled]="!ad.isFeatured"
+                >
+                  Update Ad
+                </button>
+              </div>
+              <div>
+                <button
+                  (click)="sponsorAd($event, ad._id)"
+                  class="btn btn-primary"
+                  [disabled]="!ad.isFeatured"
+                >
+                  Sponsor Ad
+                </button>
+              </div>
+              <div>
+                <button
+                  (click)="deleteAd($event, ad._id)"
+                  class="btn btn-danger"
+                  [disabled]="!ad.isFeatured"
+                >
+                  Delete Ad
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,23 @@
+<div class="content">
+  <div class="product-list">
+      <h3 class="text-center">Fresh Recommendations</h3>
+      <br><br>
+      <div class="row">
+          <div class="col-md-3" *ngFor="let product of products">
+              <div class="card mb-4" (click)="viewProductDetails(product._id)">
+                  <img [src]="'http://localhost:3000/assets/productImages/' + product.name + '/' + product.images[0]" class="card-img-top" alt="Product Image">
+                  <div class="card-body">
+                      <h5 class="card-title">{{ product.name }}</h5>
+                      <p class="card-text">{{ product.description | slice:0:50 }}...</p>
+                      <p class="card-text price">Price: {{ product.price | currency: 'INR' }}</p>
+                      <p *ngIf="product.isSponsored" class="badge-sponsored">Sponsored</p>
+                      <button class="btn btn-primary" (click)="addToWishlist(product._id, $event)">Add to Wishlist</button>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="text-center">
+          <button *ngIf="hasMore" class="btn btn-primary mt-4" (click)="loadMore()">Load More</button>
+      </div>
+  </div>
+</div>

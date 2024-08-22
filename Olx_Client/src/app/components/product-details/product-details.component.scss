@@ -1,0 +1,149 @@
+.product-details-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+
+  .left-section {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .image-gallery {
+      width: 100%;
+
+      .main-image {
+        img {
+          width: 100%;
+          height: 400px;
+          object-fit: contain;
+          border: 1px solid #ddd;
+        }
+      }
+
+      .image-thumbnails {
+        display: flex;
+        gap: 10px;
+        margin-top: 10px;
+
+        img {
+          width: 60px;
+          height: 60px;
+          object-fit: cover;
+          border: 1px solid #ddd;
+          cursor: pointer;
+
+          &.active {
+            border: 2px solid #007bff;
+          }
+        }
+      }
+    }
+
+    .overview {
+      margin-top: 20px;
+      width: 100%;
+
+      p {
+        margin: 10px 0;
+      }
+    }
+  }
+
+  .right-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    .product-info {
+      width: 100%;
+
+      h2 {
+        margin-bottom: 10px;
+      }
+
+      .price {
+        font-size: 24px;
+        font-weight: bold;
+        color: #007bff;
+        margin-bottom: 10px;
+      }
+
+      .address {
+        margin-bottom: 10px;
+      }
+
+      .chat-with-seller, 
+      .view-seller-profile {
+        display: block; // Ensure buttons are block-level elements
+        width: 100%; // Ensure buttons take full width of container
+        margin-bottom: 10px; // Space between buttons
+        padding: 10px 20px;
+        font-size: 16px;
+        border: none;
+        cursor: pointer;
+        text-align: center;
+      }
+
+      .chat-with-seller {
+        background-color: #007bff;
+        color: #fff;
+
+        &:hover {
+          background-color: #0056b3;
+        }
+      }
+
+      .view-seller-profile {
+        background-color: #28a745; // Green color for 'View Seller Profile'
+        color: #fff;
+
+        &:hover {
+          background-color: #218838; // Darker green for hover
+        }
+      }
+
+      .minimap {
+        width: 100%;
+        height: 200px;
+        border: 1px solid #ddd;
+        margin-bottom: 20px;
+      }
+    }
+  }
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  position: relative;
+  max-width: 90%;
+  max-height: 90%;
+}
+
+.zoomed-image {
+  width: 100%;
+  height: auto;
+  cursor: zoom-in;
+  transition: transform 0.25s ease;
+}
+
+.zoomed-image:hover {
+  transform: scale(1.5); /* Zoom the image on hover */
+}
+

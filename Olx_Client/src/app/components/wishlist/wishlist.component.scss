@@ -1,0 +1,91 @@
+/* wishlist.component.scss */
+
+/* Container for the wishlist component */
+.wishlist-container {
+  padding: 20px;
+  background-color: #f8f9fa; /* Light background color */
+}
+
+/* Title style */
+.wishlist-title {
+  font-size: 2rem;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Card style for each product in the wishlist */
+.wishlist-card {
+  background-color: #fff; /* White background for cards */
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  overflow: hidden;
+  margin-bottom: 20px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Ensures even spacing between elements */
+  height: 100%; /* Ensure all cards have the same height */
+
+  &:hover {
+    transform: translateY(-5px); /* Slight lift effect on hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Deeper shadow on hover */
+  }
+}
+
+/* Style for product image */
+.wishlist-card img {
+  width: 100%;
+  height: 200px; /* Fixed height for all images */
+  object-fit: contain; /* Fit the image within the area without cropping */
+  background-color: #f0f0f0; /* Light background color to handle image gaps */
+}
+
+/* Body of the card */
+.wishlist-card-body {
+  padding: 15px;
+  text-align: center; /* Center text */
+  flex-grow: 1; /* Allows the card body to expand */
+}
+
+/* Product name style */
+.product-name {
+  font-size: 1.25rem;
+  font-weight: 500;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+/* Product price style */
+.product-price {
+  font-size: 1rem;
+  font-weight: 400;
+  color: #007bff; /* Blue color for price */
+  margin-bottom: 15px;
+}
+
+/* Remove button style */
+.remove-btn {
+  background-color: #dc3545; /* Red color for remove button */
+  border: none;
+  color: #fff;
+  padding: 10px 15px;
+  border-radius: 5px;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: #c82333; /* Darker red on hover */
+  }
+}
+
+/* No items message style */
+.no-items-message {
+  font-size: 1.125rem;
+  font-weight: 400;
+  text-align: center;
+  color: #888;
+  margin-top: 20px;
+}

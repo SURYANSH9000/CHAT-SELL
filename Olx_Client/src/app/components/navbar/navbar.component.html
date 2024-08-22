@@ -1,0 +1,96 @@
+<nav class="navbar navbar-expand-lg navbar-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">
+      <img src="assets/logo.png" alt="OLX" height="30" class="blend-img">
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav" [ngClass]="{'logged-in': isLoggedIn}">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <form (submit)="searchByLocation()" class="location-form">
+            <input type="text" class="form-control" placeholder="Enter location" [(ngModel)]="locationQuery" name="locationQuery">
+          </form>
+        </li>
+        <li class="nav-item">
+          <form class="input-group search-box" [ngClass]="{'expanded': !isLoggedIn}" (submit)="search()">
+            <input type="text" class="form-control" placeholder="Find Cars, Mobile Phones and more..." [(ngModel)]="searchQuery" name="searchQuery">
+            <button class="btn btn-outline-secondary" type="submit" id="searchbtn">
+              <i class="bi bi-search"></i>
+            </button>
+          </form>
+        </li>
+      </ul>
+      <ul class="navbar-nav mb-2 mb-lg-0">
+        <li class="nav-item" *ngIf="isLoggedIn">
+          <button class="btn" (click)="onChat()">
+            <i class="bi bi-chat"></i>
+          </button>
+        </li>
+        <li class="nav-item dropdown" *ngIf="isLoggedIn">
+          <button class="btn dropdown-toggle" id="profileDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="bi bi-person"></i>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
+            <li><a class="dropdown-item"  (click)="editProfile(user?._id)"><i class="bi bi-pencil-square me-2"></i>Edit Profile</a></li> 
+            <li><a  class="dropdown-item" (click)="myAds()"><i class="bi bi-heart me-2"></i>My Ads</a></li>    
+            <li><a class="dropdown-item"  (click)="myWishlist()"><i class="bi bi-star me-2"></i>My Wishlist</a></li>       
+            <li><a class="dropdown-item" href="#" (click)="logout()"><i class="bi bi-box-arrow-right me-2"></i>Logout</a></li>
+          </ul>
+        </li>            
+        <li class="nav-item" *ngIf="!isLoggedIn">
+          <button class="btn" data-bs-toggle="modal" data-bs-target="#loginModal">
+            <u><b>Login</b></u>
+          </button>
+        </li>
+        <li class="nav-item">
+          <button class="btn sell-button" (click)="postAd()">
+            <img src="assets/sell.png" alt="Sell">
+          </button>          
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Login Modal -->
+<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="loginModalLabel">Login</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <app-login></app-login>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" data-bs-target="#registerModal" data-bs-toggle="modal">
+          Don't have an account? Register
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Register Modal -->
+<div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="registerModalLabel">Register</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <app-register></app-register>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#loginModal">
+         Already have an account? Login
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

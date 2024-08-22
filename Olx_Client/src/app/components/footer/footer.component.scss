@@ -1,0 +1,75 @@
+.footer-container {
+  background-color: #03363D;
+  color: white;
+  padding: 40px 20px; 
+  font-family: Arial, sans-serif;
+  border-top: 5px solid #02848F; 
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap; 
+  margin-bottom: 20px;
+}
+
+.footer-logo {
+  font-size: 24px; 
+  font-weight: bold;
+  margin-top: 0; 
+  margin-left: 20px; 
+}
+
+.footer-links {
+  display: flex;
+  gap: 40px; // Increased gap for better spacing between links
+  padding-left: 20px;
+  flex-wrap: wrap; // Allow wrapping for smaller screens
+}
+
+.footer-link {
+  color: white;
+  text-decoration: none;
+  font-size: 16px; 
+  transition: color 0.3s ease; 
+}
+
+.footer-link:hover {
+  color: #02848F; 
+  text-decoration: underline;
+}
+
+.footer-bottom {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap; 
+  text-align: center;
+  margin-top: 30px;
+}
+
+.footer-small-link {
+  color: white;
+  text-decoration: none;
+  margin-right: 15px; // Increased margin for better spacing
+  font-size: 14px; // Adjusted font size for consistency
+  transition: color 0.3s ease;
+}
+
+.footer-small-link:hover {
+  color: #02848F; // Change color on hover for better interactivity
+  text-decoration: underline;
+}
+
+.footer-copy {
+  margin-left: 15px; // Adjusted margin for better spacing
+  font-size: 14px; // Adjusted font size for consistency
+  color: #cccccc; // Softer color for the copyright text
+}
+
+#logo {
+  height: 40px;
+  width: 40px;
+  margin-right: 10px; // Added margin for spacing
+}

@@ -1,0 +1,125 @@
+<div class="container">
+  <button (click)="viewProfile()" type="button" class="btn btn-secondary">View profile</button>
+
+  <h2>Edit Profile</h2>
+  <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+    <div class="form-section">
+      <div class="form-section-title">Basic Information</div>
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input id="name" formControlName="name" class="form-control" />
+        <div *ngIf="userForm.get('name')?.invalid && (userForm.get('name')?.dirty || userForm.get('name')?.touched)" class="text-danger">
+          Name is required.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="description">About me (optional)</label>
+        <textarea id="description" formControlName="description" class="form-control"></textarea>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <div class="form-section-title">Contact Information</div>
+      <div class="form-group">
+        <label for="phoneNumber">Phone</label>
+        <input id="phoneNumber" formControlName="phoneNumber" class="form-control" />
+        <div *ngIf="userForm.get('phoneNumber')?.invalid && (userForm.get('phoneNumber')?.dirty || userForm.get('phoneNumber')?.touched)" class="text-danger">
+          Phone number is required.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input id="email" formControlName="email" class="form-control" />
+        <div *ngIf="userForm.get('email')?.invalid && (userForm.get('email')?.dirty || userForm.get('email')?.touched)" class="text-danger">
+          <div *ngIf="userForm.get('email')?.errors?.['required']">Email is required.</div>
+          <div *ngIf="userForm.get('email')?.errors?.['email']">Invalid email format.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <div class="form-section-title">Security</div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <div class="input-group">
+          <input id="password" [type]="showPassword ? 'text' : 'password'" formControlName="password" class="form-control" />
+          <div class="input-group-append">
+            <button type="button" class="btn btn-outline-secondary" (click)="togglePasswordVisibility()">
+              <i [ngClass]="showPassword ? 'bi bi-eye-slash' : 'bi bi-eye'"></i>
+            </button>
+          </div>
+        </div>
+        <div *ngIf="userForm.get('password')?.invalid && (userForm.get('password')?.dirty || userForm.get('password')?.touched)" class="text-danger">
+          Password is required.
+        </div>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <div class="form-section-title">Additional Information</div>
+      <div class="form-group">
+        <label for="dob">Date of Birth</label>
+        <input id="dob" type="date" formControlName="dob" class="form-control" />
+        <div *ngIf="userForm.get('dob')?.invalid && (userForm.get('dob')?.dirty || userForm.get('dob')?.touched)" class="text-danger">
+          Date of Birth is required.
+        </div>
+      </div>
+
+      <div formGroupName="address">
+        <div class="form-group">
+          <label for="houseNo">House Number</label>
+          <input id="houseNo" formControlName="houseNo" class="form-control" />
+          <div *ngIf="userForm.get('address.houseNo')?.invalid && (userForm.get('address.houseNo')?.dirty || userForm.get('address.houseNo')?.touched)" class="text-danger">
+            House Number is required.
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="street">Locality</label>
+          <input id="street" formControlName="street" class="form-control" />
+          <div *ngIf="userForm.get('address.street')?.invalid && (userForm.get('address.street')?.dirty || userForm.get('address.street')?.touched)" class="text-danger">
+            Locality is required.
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="landmark">City</label>
+          <input id="landmark" formControlName="landmark" class="form-control" />
+          <div *ngIf="userForm.get('address.landmark')?.invalid && (userForm.get('address.landmark')?.dirty || userForm.get('address.landmark')?.touched)" class="text-danger">
+            City is required.
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="state">State</label>
+          <input id="state" formControlName="state" class="form-control" />
+          <div *ngIf="userForm.get('address.state')?.invalid && (userForm.get('address.state')?.dirty || userForm.get('address.state')?.touched)" class="text-danger">
+            State is required.
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="country">Country</label>
+          <input id="country" formControlName="country" class="form-control" />
+          <div *ngIf="userForm.get('address.country')?.invalid && (userForm.get('address.country')?.dirty || userForm.get('address.country')?.touched)" class="text-danger">
+            Country is required.
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="pincode">ZIP Code</label>
+          <input id="pincode" formControlName="pincode" class="form-control" />
+          <div *ngIf="userForm.get('address.pincode')?.invalid && (userForm.get('address.pincode')?.dirty || userForm.get('address.pincode')?.touched)" class="text-danger">
+            ZIP Code is required.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="profilePic">Profile Picture</label>
+      <input type="file" (change)="onFileSelected($event)" class="form-control mt-2" />
+    </div>
+    
+    <div class="button-container">
+      <button type="submit" class="btn btn-primary">Save changes</button>
+    </div>
+  </form>
+</div>

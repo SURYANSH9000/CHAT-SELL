@@ -1,0 +1,148 @@
+<div class="post-ad-container">
+  <form [formGroup]="updateAdForm" (ngSubmit)="onSubmit()">
+    <h2>UPDATE YOUR AD</h2>
+
+    <!-- Category -->
+    <div class="form-section">
+      <label for="category">Category:</label>
+      <select id="category" formControlName="category" required>
+        <option value="" disabled>Select a category</option>
+        <option value="Mobiles">Mobiles</option>
+        <option value="Laptop">Laptop</option>
+        <option value="Cars">Cars</option>
+        <option value="Bike">Bike</option>
+        <option value="Furniture">Furniture</option>
+        <option value="Sports">Sports</option>
+      </select>
+      <div *ngIf="updateAdForm.get('category')?.invalid && (updateAdForm.get('category')?.dirty || updateAdForm.get('category')?.touched)" class="text-danger">
+        Category is required.
+      </div>
+    </div>
+
+    <!-- Ad Title -->
+    <div class="form-section">
+      <label for="ad-title">Ad Title:</label>
+      <input id="ad-title" formControlName="name" type="text" required />
+      <p>Mention the key features of your item (e.g., brand, model, age, type)</p>
+      <div *ngIf="updateAdForm.get('name')?.invalid && (updateAdForm.get('name')?.dirty || updateAdForm.get('name')?.touched)" class="text-danger">
+        Ad Title is required.
+      </div>
+    </div>
+
+    <!-- Description -->
+    <div class="form-section">
+      <label for="description">Description:</label>
+      <textarea id="description" formControlName="description" required></textarea>
+      <p>Include condition, features, and reason for selling</p>
+      <div *ngIf="updateAdForm.get('description')?.invalid && (updateAdForm.get('description')?.dirty || updateAdForm.get('description')?.touched)" class="text-danger">
+        Description is required.
+      </div>
+    </div>
+
+    <!-- Price -->
+    <div class="form-section">
+      <label for="price">Price:</label>
+      <input id="price" formControlName="price" type="number" required />
+      <div *ngIf="updateAdForm.get('price')?.invalid && (updateAdForm.get('price')?.dirty || updateAdForm.get('price')?.touched)" class="text-danger">
+        Price is required.
+      </div>
+    </div>
+
+    <!-- Details -->
+    <div class="form-section">
+      <label for="details">Details:</label>
+      <div formGroupName="details">
+        <div>
+          <label for="type">Brand:</label>
+          <input id="type" formControlName="type" type="text" required />
+          <div *ngIf="updateAdForm.get('details.type')?.invalid && (updateAdForm.get('details.type')?.dirty || updateAdForm.get('details.type')?.touched)" class="text-danger">
+            Brand is required.
+          </div>
+        </div>
+        <div>
+          <label for="ownerType">Owner Type:</label>
+          <select id="ownerType" formControlName="ownerType" required>
+            <option value="1st">1st Owner</option>
+            <option value="2nd">2nd Owner</option>
+            <option value="3rd">3rd Owner</option>
+            <option value="4th">4th Owner</option>
+            <option value="4th+">4th+ Owner</option>
+          </select>
+          <div *ngIf="updateAdForm.get('details.ownerType')?.invalid && (updateAdForm.get('details.ownerType')?.dirty || updateAdForm.get('details.ownerType')?.touched)" class="text-danger">
+            Owner Type is required.
+          </div>
+        </div>
+        <div>
+          <label for="year">Year:</label>
+          <input id="year" formControlName="year" type="number" required />
+          <div *ngIf="updateAdForm.get('details.year')?.invalid && (updateAdForm.get('details.year')?.dirty || updateAdForm.get('details.year')?.touched)" class="text-danger">
+            Year is required.
+          </div>
+        </div>
+        <div>
+          <label for="otherDetails">Other Details:</label>
+          <textarea id="otherDetails" formControlName="otherDetails"></textarea>
+        </div>
+      </div>
+    </div>
+
+    <!-- Address -->
+    <div class="form-section">
+      <label>Address:</label>
+      <div formGroupName="address">
+        <input type="text" formControlName="houseNo" placeholder="House Number" />
+        <div *ngIf="updateAdForm.get('address.houseNo')?.invalid && (updateAdForm.get('address.houseNo')?.dirty || updateAdForm.get('address.houseNo')?.touched)" class="text-danger">
+          House Number is required.
+        </div>
+        <input type="text" formControlName="street" placeholder="Locality" />
+        <div *ngIf="updateAdForm.get('address.street')?.invalid && (updateAdForm.get('address.street')?.dirty || updateAdForm.get('address.street')?.touched)" class="text-danger">
+          Locality is required.
+        </div>
+        <input type="text" formControlName="landmark" placeholder="City" />
+        <div *ngIf="updateAdForm.get('address.landmark')?.invalid && (updateAdForm.get('address.landmark')?.dirty || updateAdForm.get('address.landmark')?.touched)" class="text-danger">
+          City is required.
+        </div>
+        <input type="text" formControlName="state" placeholder="State" />
+        <div *ngIf="updateAdForm.get('address.state')?.invalid && (updateAdForm.get('address.state')?.dirty || updateAdForm.get('address.state')?.touched)" class="text-danger">
+          State is required.
+        </div>
+        <input type="text" formControlName="country" placeholder="Country" />
+        <div *ngIf="updateAdForm.get('address.country')?.invalid && (updateAdForm.get('address.country')?.dirty || updateAdForm.get('address.country')?.touched)" class="text-danger">
+          Country is required.
+        </div>
+        <input type="text" formControlName="pincode" placeholder="Pincode" />
+        <div *ngIf="updateAdForm.get('address.pincode')?.invalid && (updateAdForm.get('address.pincode')?.dirty || updateAdForm.get('address.pincode')?.touched)" class="text-danger">
+          Pincode is required.
+        </div>
+      </div>
+    </div>
+
+    <!-- Image Upload -->
+    <div class="form-section image-upload">
+      <label>Upload Images (up to 3):</label>
+      <div class="image-upload-buttons">
+        <div *ngFor="let image of images; let i = index" class="image-button">
+          <label for="image{{i}}" class="image-label">
+            <input id="image{{i}}" type="file" (change)="onFileChange($event, i)" accept="image/*" />
+            <div class="image-preview">
+              <img *ngIf="image" [src]="image" alt="Image {{i + 1}}" class="uploaded-image" />
+              <span *ngIf="!image" class="image-placeholder">Add Photo</span>
+            </div>
+            <button *ngIf="image" type="button" class="delete-button" (click)="removeImage(i)">
+              <i class="bi bi-trash3"></i>
+            </button>
+          </label>
+        </div>
+        <div *ngIf="images.length < 3" class="image-button">
+          <label for="image{{images.length}}" class="image-label">
+            <input id="image{{images.length}}" type="file" (change)="onFileChange($event, images.length)" accept="image/*" />
+            <span class="image-placeholder">Add Photo</span>
+          </label>
+        </div>
+      </div>
+      <p *ngIf="images.length === 3">Max 3 images can be added</p>
+    </div>
+
+    <button type="submit" [disabled]="updateAdForm.invalid">Update Ad</button>
+  </form>
+</div>
