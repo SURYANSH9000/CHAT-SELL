@@ -71,6 +71,6 @@ export class LoginComponent implements OnInit {
   onBlur(fieldName: string): void {
     const control = this.loginForm.get(fieldName);
     control?.markAsTouched();
-    control?.updateValueAndValidity(); // Update the validity
+    control?.updateValueAndValidity(); 
   }
 }

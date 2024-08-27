@@ -69,7 +69,7 @@ export class ProductListComponent implements OnInit {
     event.stopPropagation(); 
     const userId = this.localStorageService.getItem('userId');
     if (!userId) {
-      this.toastr.error('Please log in to add products to your wishlist'); // Display error message
+      this.toastr.error('Please log in to add products to your wishlist'); 
       // alert('Please log in to add products to your wishlist');
       console.error('User is not logged in');
       return;

@@ -42,7 +42,6 @@ export class ProductDetailsComponent implements OnInit {
         (product: Product) => {
           this.product = product;
           this.currentImage = 'http://localhost:3000/assets/productImages/' + product.name + '/' + product.images[0];
-          product.details = JSON.parse(product.details as unknown as string);
           product.address = JSON.parse(product.address as unknown as string);
           console.log('Product details:', typeof(this.product.details));
           console.log('Product address:', typeof(this.product.address));

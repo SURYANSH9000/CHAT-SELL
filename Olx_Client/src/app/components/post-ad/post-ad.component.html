@@ -1,104 +1,148 @@
 <div class="post-ad-container">
-    <form [formGroup]="postAdForm" (ngSubmit)="onSubmit()">
-      <h2>POST YOUR AD</h2>
-  
-      <div class="form-section">
-        <label for="category">Category:</label>
-        <select id="category" formControlName="category" required>
-          <option value="" disabled selected>Select a category</option>
-          <option value="Mobiles">Mobiles</option>
-          <option value="Laptop">Laptop</option>
-          <option value="Cars">Cars</option>
-          <option value="Bike">Bike</option>
-          <option value="Furniture">Furniture</option>
-          <option value="Sports">Sports</option>
-        </select>
+  <form [formGroup]="postAdForm" (ngSubmit)="onSubmit()">
+    <h2>POST YOUR AD</h2>
+
+    <!-- Category Field -->
+    <div class="form-section">
+      <label for="category">Category:</label>
+      <select id="category" formControlName="category" required>
+        <option value="" disabled selected>Select a category</option>
+        <option value="Mobiles">Mobiles</option>
+        <option value="Laptop">Laptop</option>
+        <option value="Cars">Cars</option>
+        <option value="Bike">Bike</option>
+        <option value="Furniture">Furniture</option>
+        <option value="Sports">Sports</option>
+      </select>
+      <div *ngIf="postAdForm.get('category')?.touched && postAdForm.get('category')?.invalid" class="error">
+        This field is required.
       </div>
-  
-      <div class="form-section">
-        <label for="name">Ad Title:</label>
-        <input id="name" formControlName="name" type="text" required />
-        <p>Mention the key features of your item (e.g., brand, model, age, type)</p>
+    </div>
+
+    <!-- Ad Title Field -->
+    <div class="form-section">
+      <label for="name">Ad Title:</label>
+      <input id="name" formControlName="name" type="text" required />
+      <p>Mention the key features of your item (e.g., brand, model, age, type)</p>
+      <div *ngIf="postAdForm.get('name')?.touched && postAdForm.get('name')?.invalid" class="error">
+        This field is required.
       </div>
-  
-      <div class="form-section">
-        <label for="description">Description:</label>
-        <textarea id="description" formControlName="description" required></textarea>
-        <p>Include condition, features, and reason for selling</p>
+    </div>
+
+    <!-- Description Field -->
+    <div class="form-section">
+      <label for="description">Description:</label>
+      <textarea id="description" formControlName="description" required></textarea>
+      <p>Include condition, features, and reason for selling</p>
+      <div *ngIf="postAdForm.get('description')?.touched && postAdForm.get('description')?.invalid" class="error">
+        This field is required.
       </div>
-  
-      <div class="form-section">
-        <label for="price">Price:</label>
-        <input id="price" formControlName="price" type="number" required />
+    </div>
+
+    <!-- Price Field -->
+    <div class="form-section">
+      <label for="price">Price:</label>
+      <input id="price" formControlName="price" type="number" required />
+      <div *ngIf="postAdForm.get('price')?.touched && postAdForm.get('price')?.invalid" class="error">
+        This field is required.
       </div>
-  
-      <div class="form-section">
-        <label for="details">Details:</label>
-        <div formGroupName="details">
-          <div>
-            <label for="type">Brand:</label>
-            <input id="type" formControlName="type" type="text" required />
-          </div>
-          <div>
-            <label for="ownerType">Owner Type:</label>
-            <select id="ownerType" formControlName="ownerType" required>
-              <option value="1st">1st Owner</option>
-              <option value="2nd">2nd Owner</option>
-              <option value="3rd">3rd Owner</option>
-              <option value="4th">4th Owner</option>
-              <option value="4th+">4th+ Owner</option>
-            </select>
-          </div>
-          <div>
-            <label for="year">Year:</label>
-            <input id="year" formControlName="year" type="number" required />
-          </div>
-          <div>
-            <label for="otherDetails">Other Details:</label>
-            <textarea id="otherDetails" formControlName="otherDetails"></textarea>
-          </div>
-        </div>
-      </div>
-  
-      <div class="form-section">
-        <label>Address:</label>
-        <div formGroupName="address">
-          <input type="text" formControlName="houseNo" placeholder="House Number" />
-          <input type="text" formControlName="street" placeholder="Locality" />
-          <input type="text" formControlName="landmark" placeholder="City" />
-          <input type="text" formControlName="state" placeholder="State" />
-          <input type="text" formControlName="country" placeholder="Country" />
-          <input type="text" formControlName="pincode" placeholder="Pincode" />
-        </div>
-      </div>
-  
-      <div class="form-section image-upload">
-        <label>Upload Images (up to 3):</label>
-        <div class="image-upload-buttons">
-          <div *ngFor="let image of images; let i = index" class="image-button">
-            <label for="image{{i}}" class="image-label">
-              <input id="image{{i}}" type="file" (change)="onFileChange($event, i)" accept="image/*" />
-              <div class="image-preview">
-                <img *ngIf="image" [src]="image" alt="Image {{i + 1}}" class="uploaded-image" />
-                <span *ngIf="!image" class="image-placeholder">Add Photo</span>
-              </div>
-              <button *ngIf="image" type="button" class="delete-button" (click)="removeImage(i)">
-                <i class="bi bi-trash3"></i>
-              </button>
-            </label>
-          </div>
-          <div *ngIf="images.length < 3" class="image-button">
-            <label for="image{{images.length}}" class="image-label">
-              <input id="image{{images.length}}" type="file" (change)="onFileChange($event, images.length)" accept="image/*" />
-              <span class="image-placeholder">Add Photo</span>
-            </label>
+    </div>
+
+    <!-- Details Section -->
+    <div class="form-section">
+      <label for="details">Details:</label>
+      <div formGroupName="details">
+        <div>
+          <label for="type">Brand:</label>
+          <input id="type" formControlName="type" type="text" required />
+          <div *ngIf="postAdForm.get('details.type')?.touched && postAdForm.get('details.type')?.invalid" class="error">
+            This field is required.
           </div>
         </div>
-        <p *ngIf="images.length === 3">Max 3 images can be added</p>
+        <div>
+          <label for="ownerType">Owner Type:</label>
+          <select id="ownerType" formControlName="ownerType" required>
+            <option value="1st">1st Owner</option>
+            <option value="2nd">2nd Owner</option>
+            <option value="3rd">3rd Owner</option>
+            <option value="4th">4th Owner</option>
+            <option value="4th+">4th+ Owner</option>
+          </select>
+          <div *ngIf="postAdForm.get('details.ownerType')?.touched && postAdForm.get('details.ownerType')?.invalid" class="error">
+            This field is required.
+          </div>
+        </div>
+        <div>
+          <label for="year">Year:</label>
+          <input id="year" formControlName="year" type="number" required />
+          <div *ngIf="postAdForm.get('details.year')?.touched && postAdForm.get('details.year')?.invalid" class="error">
+            This field is required.
+          </div>
+        </div>
+        <div>
+          <label for="otherDetails">Other Details:</label>
+          <textarea id="otherDetails" formControlName="otherDetails"></textarea>
+        </div>
       </div>
-      
-    
-      <button type="onSubmit" [disabled]="postAdForm.invalid">Post Ad</button>
-    </form>
-  </div>
-  
+    </div>
+
+    <!-- Address Section -->
+    <div class="form-section">
+      <label>Address:</label>
+      <div formGroupName="address">
+        <input type="text" formControlName="houseNo" placeholder="House Number" required />
+        <div *ngIf="postAdForm.get('address.houseNo')?.touched && postAdForm.get('address.houseNo')?.invalid" class="error">
+          This field is required.
+        </div>
+        <input type="text" formControlName="street" placeholder="Locality" required />
+        <div *ngIf="postAdForm.get('address.street')?.touched && postAdForm.get('address.street')?.invalid" class="error">
+          This field is required.
+        </div>
+        <input type="text" formControlName="landmark" placeholder="City" required />
+        <div *ngIf="postAdForm.get('address.landmark')?.touched && postAdForm.get('address.landmark')?.invalid" class="error">
+          This field is required.
+        </div>
+        <input type="text" formControlName="state" placeholder="State" required />
+        <div *ngIf="postAdForm.get('address.state')?.touched && postAdForm.get('address.state')?.invalid" class="error">
+          This field is required.
+        </div>
+        <input type="text" formControlName="country" placeholder="Country" required />
+        <div *ngIf="postAdForm.get('address.country')?.touched && postAdForm.get('address.country')?.invalid" class="error">
+          This field is required.
+        </div>
+        <input type="text" formControlName="pincode" placeholder="Pincode" required />
+        <div *ngIf="postAdForm.get('address.pincode')?.touched && postAdForm.get('address.pincode')?.invalid" class="error">
+          This field is required.
+        </div>
+      </div>
+    </div>
+
+    <!-- Image Upload Section -->
+    <div class="form-section image-upload">
+      <label>Upload Images (up to 3):</label>
+      <div class="image-upload-buttons">
+        <div *ngFor="let image of images; let i = index" class="image-button">
+          <label for="image{{i}}" class="image-label">
+            <input id="image{{i}}" type="file" (change)="onFileChange($event, i)" accept="image/*" />
+            <div class="image-preview">
+              <img *ngIf="image" [src]="image" alt="Image {{i + 1}}" class="uploaded-image" />
+              <span *ngIf="!image" class="image-placeholder">Add Photo</span>
+            </div>
+            <button *ngIf="image" type="button" class="delete-button" (click)="removeImage(i)">
+              <i class="bi bi-trash3"></i>
+            </button>
+          </label>
+        </div>
+        <div *ngIf="images.length < 3" class="image-button">
+          <label for="image{{images.length}}" class="image-label">
+            <input id="image{{images.length}}" type="file" (change)="onFileChange($event, images.length)" accept="image/*" />
+            <span class="image-placeholder">Add Photo</span>
+          </label>
+        </div>
+      </div>
+      <p *ngIf="images.length === 3">Max 3 images can be added</p>
+    </div>
+
+    <button type="submit" [disabled]="postAdForm.invalid">Post Ad</button>
+  </form>
+</div>
