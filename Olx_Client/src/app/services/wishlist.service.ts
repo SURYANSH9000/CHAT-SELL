@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class WishlistService {
-  private baseUrl = 'http://localhost:3000/wishlist'; // Adjust to your API URL
+  private baseUrl = 'https://chat-sell-1.onrender.com/wishlist'; // Adjust to your API URL
 
   constructor(private http: HttpClient) {}
 

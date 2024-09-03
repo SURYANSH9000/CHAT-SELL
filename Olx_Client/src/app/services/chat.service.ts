@@ -11,7 +11,7 @@ import { environment } from '../../environments/environment';
   providedIn: 'root'
 })
 export class ChatService {
-  private baseUrl = 'http://localhost:3000';
+  private baseUrl = 'https://chat-sell-1.onrender.com';
   private chatSubject = new BehaviorSubject<Chat>({} as Chat);
   currentChat = this.chatSubject.asObservable();
   private socket: Socket;
