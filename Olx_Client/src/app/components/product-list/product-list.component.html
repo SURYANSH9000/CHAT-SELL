@@ -5,7 +5,7 @@
       <div class="row">
           <div class="col-md-3" *ngFor="let product of products">
               <div class="card mb-4" (click)="viewProductDetails(product._id)">
-                  <img [src]="'http://localhost:3000/assets/productImages/' + product.name + '/' + product.images[0]" class="card-img-top" alt="Product Image">
+                  <img [src]="'https://res.cloudinary.com/dkrnlzsvw/image/upload/v1725272246/'  + this.product.images[0] +'.png'" class="card-img-top" alt="Product Image">
                   <div class="card-body">
                       <h5 class="card-title">{{ product.name }}</h5>
                       <p class="card-text">{{ product.description | slice:0:50 }}...</p>

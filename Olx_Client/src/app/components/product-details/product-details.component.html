@@ -6,7 +6,7 @@
       </div>
       <div class="image-thumbnails">
         <img *ngFor="let image of product.images; let i = index"
-             [src]="'http://localhost:3000/assets/productImages/' + product.name + '/' + image"
+             [src]="'https://res.cloudinary.com/dkrnlzsvw/image/upload/v1725272246/' + image + '.png'" 
              (click)="changeImage(i)"
              [class.active]="i === currentImageIndex">
       </div>

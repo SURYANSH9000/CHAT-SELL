@@ -57,8 +57,8 @@ async function addProduct(productData, imageFiles) {
   const productsCollection = await mongodbConnection("products");
 
   // Processing images
-  const images = imageFiles ? imageFiles.map(file => file.filename) : [];
-
+  const images = imageFiles ? imageFiles.map(file => file.url) : [];  // Assuming imageFiles contains URLs
+  
   const newProduct = {
     ...productData,
     images,

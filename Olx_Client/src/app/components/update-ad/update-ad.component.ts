@@ -79,10 +79,11 @@ export class UpdateAdComponent implements OnInit {
         country: address.country || '',
         pincode: address.pincode || ''
       });
+      console.log("imgs:", product.images); // Debugging line
 
       // Populate the images array
       this.images = (product.images || []).map(image => 
-        `http://localhost:3000/assets/productImages/${product.name}/${image}`
+        `https://res.cloudinary.com/dkrnlzsvw/image/upload/v1725272246/${image}.png`
       );
     });
   }

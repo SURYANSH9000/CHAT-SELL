@@ -84,7 +84,7 @@ export class ChatComponent implements OnInit {
         this.productService.getProductById(chat.participants[2]).subscribe(product => {
           (chat as unknown as ExtendedChat).productName = product.name; // Fetch product name
           (chat as unknown as ExtendedChat).productDescription = product.description; // Fetch product description
-          (chat as unknown as ExtendedChat).productImage ='http://localhost:3000/assets/productImages/'+ product.name +'/' + product.images[0]; // Fetch product image
+          (chat as unknown as ExtendedChat).productImage ='https://res.cloudinary.com/dkrnlzsvw/image/upload/v1725272246/'  + product.images[0] +'.png'; // Fetch product image
         },
         error => {
           console.error('Error fetching product:', error);

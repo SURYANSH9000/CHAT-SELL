@@ -29,8 +29,8 @@ app.use('/assets', express.static(path.join(__dirname, '../Olx_Client/src/assets
 // File upload routes
 app.post('/uploadProfilePic', upload.single('profilePic'), (req, res) => {
   if (req.file) {
-    const relativeFilePath = `${req.file.filename}`;
-    res.json({ filePath: relativeFilePath });
+    const filePath = req.file.path; // Cloudinary file URL
+    res.json({ filePath });
   } else {
     res.status(400).send('No file uploaded.');
   }

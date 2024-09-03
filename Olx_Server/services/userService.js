@@ -99,8 +99,8 @@ async function updateUser(id, updatedData) {
     updatedData.password = { iv, encryptedData };
   }
 
-  if (updatedData.profilePic && !updatedData.profilePic.startsWith('assets/profilePic/')) {
-    updatedData.profilePic = `assets/profilePic/${updatedData.profilePic}`;
+  if (updatedData.profilePic && updatedData.profilePic !== 'null') {
+    updatedData.profilePic = `${updatedData.profilePic}`;
   }
   const update = {
     $set: {

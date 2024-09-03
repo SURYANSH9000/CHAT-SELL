@@ -41,7 +41,8 @@ export class ProductDetailsComponent implements OnInit {
       this.productService.getProductById(productId).subscribe(
         (product: Product) => {
           this.product = product;
-          this.currentImage = 'http://localhost:3000/assets/productImages/' + product.name + '/' + product.images[0];
+          console.log('Product Imgs:', this.product.images);
+          this.currentImage = 'https://res.cloudinary.com/dkrnlzsvw/image/upload/v1725272246/' + product.images[0] +'.png';
           product.address = JSON.parse(product.address as unknown as string);
           console.log('Product details:', typeof(this.product.details));
           console.log('Product address:', typeof(this.product.address));
@@ -68,7 +69,7 @@ export class ProductDetailsComponent implements OnInit {
   changeImage(index: number): void {
     if (this.product) {
       this.currentImageIndex = index;
-      this.currentImage = 'http://localhost:3000/assets/productImages/' + this.product.name + '/' + this.product.images[index];
+      this.currentImage = 'https://res.cloudinary.com/dkrnlzsvw/image/upload/v1725272246/'  + this.product.images[index] +'.png';
     }
   }
 
