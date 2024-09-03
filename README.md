@@ -142,7 +142,6 @@ Chat & Sell Visuals:
 
 ![Screenshot from 2024-09-02 12-14-24](https://github.com/user-attachments/assets/c131f8f8-f122-4066-8797-f697416d45d3)
 ![Screenshot from 2024-09-02 12-16-49](https://github.com/user-attachments/assets/73f9462f-7b90-42ed-9af6-524fddf780f4)
-![Screenshot from 2024-09-02 12-17-37](https://github.com/user-attachments/assets/c1b747ee-cecc-4c5f-afe6-d57ca7aeb990)
 ![Screenshot from 2024-09-02 12-20-48](https://github.com/user-attachments/assets/41f64202-f0ca-4829-b292-d0bf769e30ab)
 ![Screenshot from 2024-09-02 12-22-03](https://github.com/user-attachments/assets/5446654c-f5ca-4912-9848-52e985cc7bad)
 ![Screenshot from 2024-09-02 12-22-27](https://github.com/user-attachments/assets/1b843cfa-719c-48c5-9010-f53c5fb5116a)
