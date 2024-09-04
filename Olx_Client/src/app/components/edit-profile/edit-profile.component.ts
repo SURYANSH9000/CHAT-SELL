@@ -104,7 +104,7 @@ export class EditProfileComponent implements OnInit {
         const formData = new FormData();
         formData.append('profilePic', this.selectedFile, this.selectedFile.name);
 
-        this.http.post<{ filePath: string }>('http://localhost:3000/uploadProfilePic', formData).subscribe(
+        this.http.post<{ filePath: string }>('https://chat-sell-1.onrender.com/uploadProfilePic', formData).subscribe(
           response => {
             resolve(response.filePath);
           },

@@ -27,7 +27,7 @@ import { MatBadgeModule } from '@angular/material/badge';
 import { UpdateAdComponent } from './components/update-ad/update-ad.component';
 import { PaymentModalComponent } from './components/payment-modal/payment-modal.component';
 import { ErrorComponent } from './components/error/error.component'; // import MatBadgeModule
-const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
+const config: SocketIoConfig = { url: 'https://chat-sell-1.onrender.com', options: {} };
 @NgModule({
   declarations: [
     AppComponent,
