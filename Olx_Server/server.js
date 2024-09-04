@@ -65,10 +65,16 @@ app.post('/chats/participants',authMiddleware, chatController.getChatByParticipa
 const server = http.createServer(app);
 
 const io = new Server(server, {
+  // cors: {
+  //   origin: '*',
+  // },
+  // methods: ["GET", "POST"]
   cors: {
-    origin: '*',
-  },
-  methods: ["GET", "POST"]
+    origin: "https://chatandsell.netlify.app", // Replace with your frontend URL
+    methods: ["GET", "POST"],
+    allowedHeaders: ["my-custom-header"],
+    credentials: true
+  }
 });
 
 // Attaching Socket.io to Express req object

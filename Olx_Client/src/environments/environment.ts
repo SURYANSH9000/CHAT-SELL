@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost:3000', // Your base API URL
-  SOCKET_ENDPOINT: 'http://localhost:3000'
+  apiUrl: 'https://chat-sell-1.onrender.com', // Your base API URL
+  SOCKET_ENDPOINT: 'https://chat-sell-1.onrender.com'
 };
 
 /*
