@@ -14,7 +14,7 @@ export class UserService {
     throw new Error('Method not implemented.');
   }
   arrUser: User[] = [];
-  baseUrl: string = 'https://chat-sell-1.onrender.com';
+  private baseUrl = 'https://chat-sell-1.onrender.com';
   httpHeader = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',

@@ -9,7 +9,7 @@ import { Product } from '../models/product';
   providedIn: 'root'
 })
 export class ProductService {
-  private baseUrl = 'https://chat-sell-1.onrender.com';
+  private baseUrl = 'https://chat-sell-1.onrender.com/products';
 
   constructor(private http: HttpClient) { }
 
